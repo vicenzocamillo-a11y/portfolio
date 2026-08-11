@@ -1,7 +1,7 @@
 const nextConfig = {
   output: "export",
-  basePath: "/Vicenzo-Camillo",
-  assetPrefix: "/Vicenzo-Camillo",
+  basePath: "/portfolio",
+  assetPrefix: "/portfolio",
   images: { unoptimized: true },
 };
 module.exports = nextConfig;
