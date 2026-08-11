@@ -34,7 +34,7 @@ export const projects: Project[] = [
     title: 'OraculoBot',
     description: 'Chatbot conversacional conectado a uma API de IA.',
     long: 'Bot de chat com histórico, streaming de respostas e UI responsiva. Backend em Node procesa as mensagens e integra com modelo de linguagem.',
-    tech: ['React', 'Node.js', 'OpenAI API'],
+    tech: ['React', 'Node.js', 'WebSocket'],
     link: 'https://example.com',
     category: 'Sistema',
     accent: 'from-amber-400 to-orange-600',
