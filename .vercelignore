@@ -1,0 +1,5 @@
+**/AppData/**
+**/INetCache/**
+**/Content.IE5/**
+node_modules/
+.vscode/
