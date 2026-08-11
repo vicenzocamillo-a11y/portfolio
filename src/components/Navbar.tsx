@@ -52,7 +52,7 @@ export default function Navbar() {
           <span className="font-display text-xl font-bold text-gradient">Vicenzo.</span>
         </Link>
 
-        {/* Desktop */}
+         
         <ul className="hidden md:flex items-center space-x-8">
           {sections.map((sec) => (
             <li key={sec.id} className="relative">
@@ -74,7 +74,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile toggle */}
+         
         <button
           onClick={() => setOpen((o) => !o)}
           className="md:hidden text-white/80 p-2"
@@ -88,7 +88,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+       
       <AnimatePresence>
         {open && (
           <motion.ul

@@ -33,11 +33,11 @@ export default function ProjectCard({ project, index }: { project: Project; inde
     >
       <div ref={tiltRef} className="tilt-card backdrop-glass p-5 h-full group">
         <div className="tilt-inner">
-          {/* Preview */}
+           
           <div
             className={`relative aspect-[16/10] rounded-xl overflow-hidden bg-gradient-to-br ${project.accent} mb-5`}
           >
-            {/* Decorative code window */}
+             
             <div className="absolute inset-0 bg-darkBg/40 backdrop-blur-[1px]" />
             <div className="absolute top-3 left-3 flex gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
@@ -53,7 +53,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               {'> '}coding{project.title.toLowerCase()}.tsx
             </div>
 
-            {/* Hover overlay */}
+             
             <div className="absolute inset-0 bg-darkBg/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-5 text-center">
               <p className="text-sm text-white/80 leading-relaxed">{project.long}</p>
               <a
@@ -71,7 +71,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             </span>
           </div>
 
-          {/* Info */}
+           
           <h3 className="text-xl font-display font-semibold text-white group-hover:text-primary transition-colors">
             {project.title}
           </h3>

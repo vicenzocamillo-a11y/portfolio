@@ -29,7 +29,7 @@ export default function About() {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple/5" />
             <div className="relative z-10 w-72 h-72 mx-auto">
               <img
-                src="/images/vicenzo-photo.png"
+                src="images/vicenzo-photo.png"
                 alt="Vicenzo"
                 className="w-full h-full object-cover rounded-xl"
               />

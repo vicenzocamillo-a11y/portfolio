@@ -16,7 +16,7 @@ const letter = {
 export default function Hero() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center px-4 text-center">
-      {/* floating tech badges */}
+       
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

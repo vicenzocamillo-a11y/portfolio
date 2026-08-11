@@ -19,7 +19,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Nav */}
+           
           <div>
             <h4 className="text-sm font-semibold text-white mb-3">Navegação</h4>
             <ul className="space-y-2 text-sm text-white/60">
@@ -30,7 +30,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social */}
+           
           <div>
             <h4 className="text-sm font-semibold text-white mb-3">Conecte-se</h4>
             <div className="flex gap-3">
