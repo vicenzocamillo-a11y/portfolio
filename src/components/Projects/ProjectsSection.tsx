@@ -15,11 +15,17 @@ export default function ProjectsSection() {
     >
       <SectionHeading subtitle="O que fiz" title="Projetos" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-        {projects.map((p, i) => (
-          <ProjectCard key={p.title} project={p} index={i} />
-        ))}
-      </div>
+      {projects.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {projects.map((p, i) => (
+            <ProjectCard key={p.title} project={p} index={i} />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-12 text-center">
+          <p className="text-white/60">Em breve, novos projetos estarão aqui.</p>
+        </div>
+      )}
     </motion.div>
   );
 }

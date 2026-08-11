@@ -9,48 +9,7 @@ export type Project = {
   glyph: string;
 };
 
-export const projects: Project[] = [
-  {
-    title: 'TaskFlow',
-    description: 'Gerenciador de tarefas com drag-and-drop e persistência local.',
-    long: 'Aplicação web completa para organizar tarefas em colunas (Kanban), com arrastar e soltar, prioridades e armazenamento no navegador.',
-    tech: ['React', 'TypeScript', 'Framer Motion'],
-    link: 'https://example.com',
-    category: 'Projeto',
-    accent: 'from-cyan-400 to-blue-600',
-    glyph: '☑',
-  },
-  {
-    title: 'NeoPortfolio',
-    description: 'Portfólio 3D com animações avançadas de scroll e parallax.',
-    long: 'Landing page futurista com cursor customizado, tilt 3D, aurora animada e microinterações. Construído como vitrine de habilidades front-end.',
-    tech: ['Next.js', 'Three.js', 'GSAP'],
-    link: 'https://example.com',
-    category: 'Projeto',
-    accent: 'from-fuchsia-500 to-purple-700',
-    glyph: '◆',
-  },
-  {
-    title: 'OraculoBot',
-    description: 'Chatbot conversacional conectado a uma API de IA.',
-    long: 'Bot de chat com histórico, streaming de respostas e UI responsiva. Backend em Node procesa as mensagens e integra com modelo de linguagem.',
-    tech: ['React', 'Node.js', 'WebSocket'],
-    link: 'https://example.com',
-    category: 'Sistema',
-    accent: 'from-amber-400 to-orange-600',
-    glyph: '✦',
-  },
-  {
-    title: 'StockSys',
-    description: 'Sistema de controle de estoque com cadastro e relatórios.',
-    long: 'Sistema completo de gestão: produtos, entradas/saídas, dashboard com gráficos e exportação de relatórios. Foco em lógica de negócio e dados.',
-    tech: ['PHP', 'MySQL', 'Chart.js'],
-    link: 'https://example.com',
-    category: 'Sistema',
-    accent: 'from-emerald-400 to-teal-600',
-    glyph: '▤',
-  },
-];
+export const projects: Project[] = [];
 
 export const skills = [
   { name: 'HTML5', level: 100, color: '#e34f26' },
