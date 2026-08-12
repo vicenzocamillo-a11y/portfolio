@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build && node clean-types.js",
     "start": "next start",
-    "deploy": "next build && node clean-types.js && node -e \"require('fs').writeFileSync('out/.nojekyll','')\" && gh-pages -d out -t"
+    "deploy": "cross-env BASE_PATH=/portfolio next build && node clean-types.js && node -e \"require('fs').writeFileSync('out/.nojekyll','')\" && gh-pages -d out -t"
   },
   "dependencies": {
     "autoprefixer": "10.4.16",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@types/node": "20.11.24",
     "@types/react": "18.2.57",
+    "cross-env": "^10.1.0",
     "gh-pages": "^6.3.0",
     "typescript": "5.3.3"
   }
