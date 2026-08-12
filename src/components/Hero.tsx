@@ -1,6 +1,8 @@
 "use client";
 import { motion } from 'framer-motion';
 import { FiArrowDown, FiGithub, FiCpu } from 'react-icons/fi';
+import T from './T';
+import { useLang } from './LanguageProvider';
 
 const name = 'VICENZO';
 
@@ -14,6 +16,7 @@ const letter = {
 };
 
 export default function Hero() {
+  const { t } = useLang();
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center px-4 text-center">
        
@@ -51,7 +54,7 @@ export default function Hero() {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
         </span>
-        Disponível para novos projetos
+        {t('hero.badge')}
       </motion.span>
 
       <motion.h1
@@ -74,9 +77,7 @@ export default function Hero() {
         transition={{ delay: 1.2, duration: 0.8 }}
         className="mt-6 max-w-2xl text-lg md:text-2xl text-white/70 font-light"
       >
-        Estudante de <span className="text-white font-medium">Informática</span> transformando
-        ideias em <span className="text-gradient font-medium">código criativo</span> e interfaces
-        que impressionam.
+        <T k="hero.p1" />
       </motion.p>
 
       <motion.div
@@ -92,7 +93,7 @@ export default function Hero() {
           className="group relative overflow-hidden px-8 py-3.5 rounded-full font-semibold text-darkBg bg-gradient-to-r from-primary to-accent transition-transform"
         >
           <span className="relative z-10 flex items-center gap-2">
-            <FiCpu /> Ver Projetos
+            <FiCpu /> {t('hero.cta')}
           </span>
           <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
         </motion.a>
@@ -102,7 +103,7 @@ export default function Hero() {
           whileTap={{ scale: 0.96 }}
           className="px-8 py-3.5 rounded-full font-medium text-white border border-white/20 hover:bg-white/10 backdrop-blur-md transition-colors"
         >
-          Contato
+          {t('hero.contact')}
         </motion.a>
       </motion.div>
 
@@ -113,7 +114,7 @@ export default function Hero() {
         transition={{ delay: 2 }}
         className="absolute bottom-8 flex flex-col items-center text-white/40 hover:text-white transition-colors"
       >
-        <span className="text-xs mb-2">Role para baixo</span>
+        <span className="text-xs mb-2">{t('hero.scroll')}</span>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.6, repeat: Infinity }}>
           <FiArrowDown className="text-lg" />
         </motion.div>

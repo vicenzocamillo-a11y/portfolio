@@ -2,20 +2,23 @@
 import { motion } from 'framer-motion';
 import { FiMapPin, FiBookOpen, FiCode, FiZap, FiServer, FiDatabase } from 'react-icons/fi';
 import SectionHeading from './SectionHeading';
+import T from './T';
+import { useLang } from './LanguageProvider';
 
 const facts = [
-  { icon: FiBookOpen, label: 'Ensino Médio', value: '1º Ano · Técnico em Informática' },
-  { icon: FiMapPin, label: 'Localização', value: 'Brasil · Remoto' },
-  { icon: FiCode, label: 'Front-end', value: 'React, Next.js, TypeScript, Tailwind' },
-  { icon: FiServer, label: 'Back-end', value: 'Node.js, APIs, Banco de Dados, Auth' },
-  { icon: FiDatabase, label: 'Sistemas', value: 'C, Python, Java — lógica e algoritmos' },
-  { icon: FiZap, label: 'Foco', value: 'Full Stack & UI/UX Design' },
+  { icon: FiBookOpen, labelKey: 'about.fact1.label', valueKey: 'about.fact1.value' },
+  { icon: FiMapPin, labelKey: 'about.fact2.label', valueKey: 'about.fact2.value' },
+  { icon: FiCode, labelKey: 'about.fact3.label', valueKey: 'about.fact3.value' },
+  { icon: FiServer, labelKey: 'about.fact4.label', valueKey: 'about.fact4.value' },
+  { icon: FiDatabase, labelKey: 'about.fact5.label', valueKey: 'about.fact5.value' },
+  { icon: FiZap, labelKey: 'about.fact6.label', valueKey: 'about.fact6.value' },
 ];
 
 export default function About() {
+  const { t } = useLang();
   return (
     <div className="container mx-auto px-4 max-w-6xl">
-      <SectionHeading subtitle="Quem sou" title="Sobre Mim" />
+      <SectionHeading subtitle={t('about.subtitle')} title={t('about.title')} />
 
       <div className="grid md:grid-cols-5 gap-10 items-center mt-12">
         <motion.div
@@ -49,19 +52,10 @@ export default function About() {
           className="md:col-span-3 space-y-5"
         >
           <p className="text-lg text-white/70 leading-relaxed">
-            Sou <span className="text-white font-medium">Vicenzo</span>, estudante do 1º ano do
-            ensino médio com curso técnico em <span className="text-white font-medium">Informática</span>.
-            Descobri na programação uma forma de transformar imaginação em realidade — gosto de
-            construir interfaces que não apenas funcionam, mas causam impressão.
+            <T k="about.p1" />
           </p>
           <p className="text-white/60 leading-relaxed">
-            Atuo como <span className="text-white font-medium">desenvolvedor Full Stack</span>:
-            no front-end crio experiências fluidas com React, Next.js e TypeScript; no back-end
-            construo APIs, autenticação e trabalho com bancos de dados. Paralelamente, estou
-            finalizando a base em <span className="text-white font-medium">linguagem C</span> e
-            já iniciei estudos em <span className="text-white font-medium">Python</span> e
-            <span className="text-white font-medium">Java</span> para expandir minha visão de
-            sistemas e algoritmos.
+            <T k="about.p2" />
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-2">
@@ -76,8 +70,8 @@ export default function About() {
               >
                 <f.icon className="text-primary text-xl shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-xs text-white/40 uppercase tracking-wide">{f.label}</div>
-                  <div className="text-sm text-white/85 font-medium">{f.value}</div>
+                  <div className="text-xs text-white/40 uppercase tracking-wide">{t(f.labelKey)}</div>
+                  <div className="text-sm text-white/85 font-medium">{t(f.valueKey)}</div>
                 </div>
               </motion.div>
             ))}

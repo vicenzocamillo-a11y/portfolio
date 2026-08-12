@@ -133,3 +133,12 @@ body {
   transition: width 0.3s ease;
 }
 .link-underline:hover::after { width: 100%; }
+
+@keyframes glitch-in {
+  0% { opacity: 0; letter-spacing: 0.6em; filter: blur(6px); }
+  60% { opacity: 1; letter-spacing: 0.2em; filter: blur(0); }
+  70% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+  80% { transform: translateX(1px); }
+  100% { opacity: 1; transform: translateX(0); }
+}

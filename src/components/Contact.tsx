@@ -1,29 +1,31 @@
 "use client";
 import { motion } from 'framer-motion';
 import { FiMail, FiInstagram, FiPhone } from 'react-icons/fi';
+import { useLang } from './LanguageProvider';
 
 const contacts = [
   {
     icon: FiMail,
-    label: 'E-mail',
+    labelKey: 'contact.email',
     value: 'vicenzocamillo@gmail.com',
     href: 'mailto:vicenzocamillo@gmail.com',
   },
   {
     icon: FiInstagram,
-    label: 'Instagram',
+    labelKey: 'contact.instagram',
     value: '@vicenzo25camillo',
     href: 'https://instagram.com/vicenzo25camillo',
   },
   {
     icon: FiPhone,
-    label: 'WhatsApp',
+    labelKey: 'contact.whatsapp',
     value: '+55 51 9701-6902',
     href: 'https://wa.me/555197016902',
   },
 ];
 
 export default function Contact() {
+  const { t } = useLang();
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-4 max-w-3xl">
@@ -35,9 +37,9 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <span className="inline-block text-xs font-mono uppercase tracking-[0.3em] text-primary/80 mb-3">
-            Entre em contato
+            {t('contact.subtitle')}
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-white">Contato</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white">{t('contact.title')}</h2>
           <div className="mt-4 mx-auto w-20 h-1 rounded-full bg-gradient-to-r from-primary via-purple to-accent" />
         </motion.div>
 
@@ -61,7 +63,7 @@ export default function Contact() {
                   <c.icon className="text-primary text-xl" />
                 </div>
                 <div>
-                  <div className="text-xs text-white/40 uppercase tracking-wide">{c.label}</div>
+                  <div className="text-xs text-white/40 uppercase tracking-wide">{t(c.labelKey)}</div>
                   <div className="text-white/90 font-medium group-hover:text-accent transition-colors">
                     {c.value}
                   </div>

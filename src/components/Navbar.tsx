@@ -2,16 +2,19 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
+import { useLang } from './LanguageProvider';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const sections = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'Sobre' },
-  { id: 'projects', label: 'Projetos' },
-  { id: 'skills', label: 'Habilidades' },
-  { id: 'contact', label: 'Contato' },
+  { id: 'home', key: 'nav.home' },
+  { id: 'about', key: 'nav.about' },
+  { id: 'projects', key: 'nav.projects' },
+  { id: 'skills', key: 'nav.skills' },
+  { id: 'contact', key: 'nav.contact' },
 ];
 
 export default function Navbar() {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('home');
@@ -51,40 +54,41 @@ export default function Navbar() {
           <span className="font-display text-xl font-bold text-gradient">Vicenzo.</span>
         </a>
 
-         
-        <ul className="hidden md:flex items-center space-x-8">
-          {sections.map((sec) => (
-            <li key={sec.id} className="relative">
-              <a
-                href={`#${sec.id}`}
-                className={`text-sm font-medium transition-colors ${
-                  active === sec.id ? 'text-white' : 'text-white/60 hover:text-white'
-                }`}
-              >
-                {sec.label}
-              </a>
-              {active === sec.id && (
-                <motion.span
-                  layoutId="nav-active"
-                  className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-purple rounded-full"
-                />
-              )}
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-3">
+          <ul className="hidden md:flex items-center space-x-8">
+            {sections.map((sec) => (
+              <li key={sec.id} className="relative">
+                <a
+                  href={`#${sec.id}`}
+                  className={`text-sm font-medium transition-colors ${
+                    active === sec.id ? 'text-white' : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {t(sec.key)}
+                </a>
+                {active === sec.id && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-purple rounded-full"
+                  />
+                )}
+              </li>
+            ))}
+          </ul>
 
-         
-        <button
-          onClick={() => setOpen((o) => !o)}
-          className="md:hidden text-white/80 p-2"
-          aria-label="Menu"
-        >
-          <div className="space-y-1.5">
-            <span className={`block h-0.5 w-6 bg-current transition-transform ${open ? 'translate-y-2 rotate-45' : ''}`} />
-            <span className={`block h-0.5 w-6 bg-current transition-opacity ${open ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-6 bg-current transition-transform ${open ? '-translate-y-2 -rotate-45' : ''}`} />
-          </div>
-        </button>
+          <LanguageSwitcher />
+          <button
+            onClick={() => setOpen((o) => !o)}
+            className="md:hidden text-white/80 p-2"
+            aria-label={t('nav.menu')}
+          >
+            <div className="space-y-1.5">
+              <span className={`block h-0.5 w-6 bg-current transition-transform ${open ? 'translate-y-2 rotate-45' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-current transition-opacity ${open ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 w-6 bg-current transition-transform ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+            </div>
+          </button>
+        </div>
       </div>
 
        
@@ -104,7 +108,7 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className={`block text-lg font-medium ${active === sec.id ? 'text-primary' : 'text-white/70'}`}
                 >
-                  {sec.label}
+                  {t(sec.key)}
                 </a>
               </li>
             ))}

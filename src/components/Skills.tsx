@@ -2,8 +2,10 @@
 import { motion } from 'framer-motion';
 import { skills } from '@/lib/data';
 import SectionHeading from './SectionHeading';
+import { useLang } from './LanguageProvider';
 
 export default function Skills() {
+  const { t } = useLang();
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -12,7 +14,7 @@ export default function Skills() {
       transition={{ duration: 0.8 }}
       className="container mx-auto px-4 max-w-4xl"
     >
-      <SectionHeading subtitle="O que uso" title="Habilidades" />
+      <SectionHeading subtitle={t('skills.subtitle')} title={t('skills.title')} />
 
       <div className="space-y-6 mt-12">
         {skills.map((s, i) => (
