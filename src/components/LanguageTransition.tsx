@@ -14,50 +14,44 @@ export default function LanguageTransition({
 }) {
   useEffect(() => {
     const swapTimer = setTimeout(() => onSwap(lang), 420);
-    const doneTimer = setTimeout(onDone, 780);
+    const doneTimer = setTimeout(onDone, 740);
     return () => {
       clearTimeout(swapTimer);
       clearTimeout(doneTimer);
     };
   }, [lang, onSwap, onDone]);
 
+  const meta = LANG_META[lang];
+
   return (
-    <div className="fixed inset-0 z-[300] pointer-events-none flex items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 z-[300] pointer-events-none overflow-hidden">
       <motion.div
         className="absolute inset-0 bg-darkBg"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.16, ease: 'easeOut' }}
-      />
-      <motion.div
-        className="absolute inset-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.05 }}
-        style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
-      />
-      <motion.div
-        className="absolute inset-y-0 w-px bg-gradient-to-b from-transparent via-primary/60 to-transparent"
-        initial={{ left: '0%', opacity: 0 }}
-        animate={{ left: '100%', opacity: [0, 1, 0] }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], times: [0, 0.5, 1] }}
-      />
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: 0.18 }}
-        className="relative"
+        style={{ transformOrigin: 'top' }}
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: [0, 1, 1, 0] }}
+        transition={{ duration: 0.72, times: [0, 0.24, 0.64, 1], ease: [0.76, 0, 0.24, 1] }}
       >
-        <span className="font-display text-2xl font-semibold tracking-[0.35em] text-white/90 uppercase">
-          {LANG_META[lang]}
-        </span>
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
       </motion.div>
-      <motion.div
-        className="absolute bottom-10 w-16 h-[2px] rounded-full bg-gradient-to-r from-primary to-purple"
-        initial={{ scaleX: 0, opacity: 0 }}
-        animate={{ scaleX: 1, opacity: 1 }}
-        transition={{ duration: 0.35, delay: 0.22, ease: 'easeOut' }}
-      />
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: [0, 1, 1, 0], y: [10, 0, 0, -10] }}
+          transition={{ duration: 0.72, times: [0.22, 0.32, 0.58, 0.72], ease: 'easeOut' }}
+          className="font-display text-5xl md:text-6xl font-semibold tracking-[0.18em] text-white uppercase"
+        >
+          {meta.label}
+        </motion.span>
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 1, 1, 0] }}
+          transition={{ duration: 0.72, times: [0.3, 0.38, 0.54, 0.66] }}
+          className="text-xs font-mono uppercase tracking-[0.4em] text-white/50"
+        >
+          {meta.sub}
+        </motion.span>
+      </div>
     </div>
   );
 }
