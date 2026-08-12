@@ -9,7 +9,18 @@ export type Project = {
   glyph: string;
 };
 
-export const projects: Project[] = [];
+export const projects: Project[] = [
+  {
+    title: 'nttlio',
+    description: 'Loja de impressão 3D premium com carrinho e pagamento Pix.',
+    long: 'E-commerce completo de impressão 3D: catálogo de produtos, carrinho, pagamento via Pix/Mercado Pago, área do cliente com acompanhamento de pedidos e painel administrativo.',
+    tech: ['JavaScript', 'Three.js', 'Express', 'SQLite', 'Mercado Pago'],
+    link: 'https://github.com/vicenzocamillo-a11y/nttlio',
+    category: 'Projeto',
+    accent: 'from-orange-400 to-rose-600',
+    glyph: '▣',
+  },
+];
 
 export const skills = [
   { name: 'HTML5', level: 100, color: '#e34f26' },
