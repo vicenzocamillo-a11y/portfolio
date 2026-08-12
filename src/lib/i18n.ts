@@ -2,10 +2,10 @@ export type Lang = 'pt' | 'en' | 'es';
 
 export const LANGS: Lang[] = ['pt', 'en', 'es'];
 
-export const LANG_META: Record<Lang, { label: string; flag: string; done: string }> = {
-  pt: { label: 'PORTUGUÊS', flag: '🇧🇷', done: 'troca concluída' },
-  en: { label: 'ENGLISH', flag: '🇺🇸', done: 'switch complete' },
-  es: { label: 'ESPAÑOL', flag: '🇪🇸', done: 'cambio completado' },
+export const LANG_META: Record<Lang, string> = {
+  pt: 'PORTUGUÊS',
+  en: 'ENGLISH',
+  es: 'ESPAÑOL',
 };
 
 type Dict = Record<string, string>;
