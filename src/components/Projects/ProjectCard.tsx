@@ -2,7 +2,7 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import VanillaTilt from 'vanilla-tilt';
-import { FiExternalLink } from 'react-icons/fi';
+import { FiExternalLink, FiEye } from 'react-icons/fi';
 import type { Project } from '../../lib/data';
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -56,14 +56,26 @@ export default function ProjectCard({ project, index }: { project: Project; inde
              
             <div className="absolute inset-0 bg-darkBg/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-5 text-center">
               <p className="text-sm text-white/80 leading-relaxed">{project.long}</p>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors"
-              >
-                <FiExternalLink /> Ver no GitHub
-              </a>
+              <div className="mt-5 flex items-center gap-3">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors"
+                >
+                  <FiExternalLink /> GitHub
+                </a>
+                {project.preview && (
+                  <a
+                    href={project.preview}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors"
+                  >
+                    <FiEye /> Preview
+                  </a>
+                )}
+              </div>
             </div>
 
             <span className="absolute top-3 right-3 text-[10px] font-mono px-2 py-1 rounded-full bg-darkBg/60 text-white/80 border border-white/10">
