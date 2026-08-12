@@ -1,5 +1,4 @@
 "use client";
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Logo from './Logo';
 import { FiGithub, FiMail, FiInstagram, FiPhone } from 'react-icons/fi';
@@ -10,10 +9,10 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12 max-w-5xl">
         <div className="grid md:grid-cols-3 gap-8 items-start">
                     <div>
-            <Link href="#home" className="flex items-center gap-2.5 mb-3">
+            <a href="#home" className="flex items-center gap-2.5 mb-3">
               <Logo size={32} />
               <span className="font-display text-xl font-bold text-gradient">Vicenzo.</span>
-            </Link>
+            </a>
             <p className="text-sm text-white/50 max-w-xs">
               Desenvolvedor Full Stack em formação. Construindo experiências que impressionam.
             </p>

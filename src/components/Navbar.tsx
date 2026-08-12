@@ -1,5 +1,4 @@
 "use client";
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
@@ -45,25 +44,25 @@ export default function Navbar() {
       transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.2 }}
     >
       <div className="container mx-auto flex items-center justify-between px-4">
-        <Link href="#home" className="group flex items-center gap-2.5">
+        <a href="#home" className="group flex items-center gap-2.5">
           <span className="transition-transform group-hover:scale-110">
             <Logo size={32} />
           </span>
           <span className="font-display text-xl font-bold text-gradient">Vicenzo.</span>
-        </Link>
+        </a>
 
          
         <ul className="hidden md:flex items-center space-x-8">
           {sections.map((sec) => (
             <li key={sec.id} className="relative">
-              <Link
+              <a
                 href={`#${sec.id}`}
                 className={`text-sm font-medium transition-colors ${
                   active === sec.id ? 'text-white' : 'text-white/60 hover:text-white'
                 }`}
               >
                 {sec.label}
-              </Link>
+              </a>
               {active === sec.id && (
                 <motion.span
                   layoutId="nav-active"
@@ -100,13 +99,13 @@ export default function Navbar() {
           >
             {sections.map((sec) => (
               <li key={sec.id}>
-                <Link
+                <a
                   href={`#${sec.id}`}
                   onClick={() => setOpen(false)}
                   className={`block text-lg font-medium ${active === sec.id ? 'text-primary' : 'text-white/70'}`}
                 >
                   {sec.label}
-                </Link>
+                </a>
               </li>
             ))}
           </motion.ul>
