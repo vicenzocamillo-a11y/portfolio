@@ -1,11 +1,11 @@
 "use client";
 import { createContext, useContext, useState, useEffect, useCallback, useRef, ReactNode } from 'react';
 import LanguageTransition from './LanguageTransition';
-import { translations } from '@/lib/i18n';
+import { translations, LANGS, Lang } from '@/lib/i18n';
 
 type Ctx = {
-  lang: 'pt' | 'en';
-  setLang: (l: 'pt' | 'en') => void;
+  lang: Lang;
+  setLang: (l: Lang) => void;
   toggle: () => void;
   switching: boolean;
   t: (key: string) => string;
@@ -24,16 +24,16 @@ export function useLang() {
 }
 
 export default function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<'pt' | 'en'>('pt');
-  const [pending, setPending] = useState<'pt' | 'en' | null>(null);
+  const [lang, setLangState] = useState<Lang>('pt');
+  const [pending, setPending] = useState<Lang | null>(null);
   const [switching, setSwitching] = useState(false);
-  const langRef = useRef<'pt' | 'en'>('pt');
+  const langRef = useRef<Lang>('pt');
   const switchingRef = useRef(false);
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('lang');
-      if (saved === 'pt' || saved === 'en') {
+      const saved = localStorage.getItem('lang') as Lang | null;
+      if (saved && translations[saved]) {
         setLangState(saved);
         langRef.current = saved;
       }
@@ -47,7 +47,7 @@ export default function LanguageProvider({ children }: { children: ReactNode }) 
     } catch {}
   }, [lang]);
 
-  const setLang = useCallback((l: 'pt' | 'en') => {
+  const setLang = useCallback((l: Lang) => {
     if (l === langRef.current || switchingRef.current) return;
     switchingRef.current = true;
     setPending(l);
@@ -55,10 +55,11 @@ export default function LanguageProvider({ children }: { children: ReactNode }) 
   }, []);
 
   const toggle = useCallback(() => {
-    setLang(langRef.current === 'pt' ? 'en' : 'pt');
+    const next = LANGS[(LANGS.indexOf(langRef.current) + 1) % LANGS.length];
+    setLang(next);
   }, [setLang]);
 
-  const swap = useCallback((l: 'pt' | 'en') => {
+  const swap = useCallback((l: Lang) => {
     setLangState(l);
   }, []);
 

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { LANG_META, Lang } from '@/lib/i18n';
 
 const DURATION = 1.4;
 const TIMES = [0, 0.4, 0.62, 1];
@@ -10,12 +11,13 @@ export default function LanguageTransition({
   onSwap,
   onDone,
 }: {
-  lang: 'pt' | 'en';
-  onSwap: (l: 'pt' | 'en') => void;
+  lang: Lang;
+  onSwap: (l: Lang) => void;
   onDone: () => void;
 }) {
-  const label = lang === 'en' ? 'ENGLISH' : 'PORTUGUÊS';
-  const flag = lang === 'en' ? '🇺🇸' : '🇧🇷';
+  const meta = LANG_META[lang];
+  const label = meta.label;
+  const flag = meta.flag;
 
   useEffect(() => {
     const swapTimer = setTimeout(() => onSwap(lang), 560);
@@ -57,7 +59,7 @@ export default function LanguageTransition({
         </motion.span>
         <span className="font-display text-2xl font-bold tracking-[0.3em] text-gradient">{label}</span>
         <span className="text-sm text-white/60 font-mono" style={{ animation: 'glitch-in 0.6s ease-out 0.5s both' }}>
-          {lang === 'en' ? 'switch complete' : 'troca concluída'}
+          {meta.done}
         </span>
       </motion.div>
     </div>

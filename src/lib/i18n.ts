@@ -1,6 +1,12 @@
-export type Lang = 'pt' | 'en';
+export type Lang = 'pt' | 'en' | 'es';
 
-export const LANGS: Lang[] = ['pt', 'en'];
+export const LANGS: Lang[] = ['pt', 'en', 'es'];
+
+export const LANG_META: Record<Lang, { label: string; flag: string; done: string }> = {
+  pt: { label: 'PORTUGUÊS', flag: '🇧🇷', done: 'troca concluída' },
+  en: { label: 'ENGLISH', flag: '🇺🇸', done: 'switch complete' },
+  es: { label: 'ESPAÑOL', flag: '🇪🇸', done: 'cambio completado' },
+};
 
 type Dict = Record<string, string>;
 
@@ -110,5 +116,58 @@ export const translations: Record<Lang, Dict> = {
     'footer.projects': 'Projects',
     'footer.skills': 'Skills',
     'footer.contact': 'Contact',
+  },
+  es: {
+    'nav.home': 'Inicio',
+    'nav.about': 'Sobre mí',
+    'nav.projects': 'Proyectos',
+    'nav.skills': 'Habilidades',
+    'nav.contact': 'Contacto',
+    'nav.menu': 'Menú',
+
+    'hero.badge': 'Disponible para nuevos proyectos',
+    'hero.p1': 'Estudiante de {b}Informática{/b} transformando ideas en {g}código creativo{/g} e interfaces que impresionan.',
+    'hero.cta': 'Ver Proyectos',
+    'hero.contact': 'Contacto',
+    'hero.scroll': 'Desplázate hacia abajo',
+
+    'about.subtitle': 'Quién soy',
+    'about.title': 'Sobre Mí',
+    'about.p1': 'Soy {b}Vicenzo{/b}, estudiante de 1º año de secundaria con curso técnico en {b}Informática{/b}. Descubrí en la programación una forma de transformar la imaginación en realidad — me gusta construir interfaces que no solo funcionan, sino que impresionan.',
+    'about.p2': 'Trabajo como {b}desarrollador Full Stack{/b}: en el front-end creo experiencias fluidas con React, Next.js y TypeScript; en el back-end construyo APIs, autenticación y trabajo con bases de datos. En paralelo, estoy terminando la base en {b}lenguaje C{/b} y ya empecé a estudiar {b}Python{/b} y {b}Java{/b} para ampliar mi visión de sistemas y algoritmos.',
+    'about.fact1.label': 'Secundaria',
+    'about.fact1.value': '1º Año · Técnico en Informática',
+    'about.fact2.label': 'Ubicación',
+    'about.fact2.value': 'Brasil · Remoto',
+    'about.fact3.label': 'Front-end',
+    'about.fact3.value': 'React, Next.js, TypeScript, Tailwind',
+    'about.fact4.label': 'Back-end',
+    'about.fact4.value': 'Node.js, APIs, Bases de Datos, Auth',
+    'about.fact5.label': 'Sistemas',
+    'about.fact5.value': 'C, Python, Java — lógica y algoritmos',
+    'about.fact6.label': 'Enfoque',
+    'about.fact6.value': 'Full Stack & UI/UX Design',
+
+    'projects.subtitle': 'Lo que hice',
+    'projects.title': 'Proyectos',
+    'projects.empty': 'Pronto, nuevos proyectos estarán aquí.',
+
+    'skills.subtitle': 'Lo que uso',
+    'skills.title': 'Habilidades',
+
+    'contact.subtitle': 'Ponte en contacto',
+    'contact.title': 'Contacto',
+    'contact.email': 'Correo',
+    'contact.instagram': 'Instagram',
+    'contact.whatsapp': 'WhatsApp',
+
+    'footer.tagline': 'Desarrollador Full Stack en formación. Construyendo experiencias que impresionan.',
+    'footer.nav': 'Navegación',
+    'footer.connect': 'Conéctate',
+    'footer.rights': 'Todos los derechos reservados.',
+    'footer.about': 'Sobre mí',
+    'footer.projects': 'Proyectos',
+    'footer.skills': 'Habilidades',
+    'footer.contact': 'Contacto',
   },
 };
