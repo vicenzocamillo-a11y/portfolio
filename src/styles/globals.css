@@ -2,143 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Color tokens as RGB triplets so Tailwind can apply alpha. */
 :root {
-  --bg: #07070b;
-  --primary: #00e0ff;
-  --accent: #ffe45e;
-  --purple: #a855f7;
+  --bg: 255 255 255;
+  --surface: 245 245 247;
+  --raised: 255 255 255;
+  --fg: 29 29 31;
+  --muted: 110 110 115;
+  --line: 210 210 215;
+  --accent: 0 102 204;
+  --nav: 255 255 255;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 0 0 0;
+    --surface: 22 22 23;
+    --raised: 36 36 38;
+    --fg: 245 245 247;
+    --muted: 161 161 166;
+    --line: 66 66 69;
+    --accent: 41 151 255;
+    --nav: 22 22 23;
+    color-scheme: dark;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  @apply bg-[#07070b] text-white antialiased;
-  overflow-x: hidden;
-  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  @apply bg-bg text-fg font-sans antialiased;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.bg-aurora {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.bg-aurora::before,
-.bg-aurora::after {
-  content: '';
-  position: absolute;
-  width: 60vw;
-  height: 60vw;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.35;
-  animation: float 18s ease-in-out infinite;
-}
-.bg-aurora::before {
-  background: radial-gradient(circle, var(--primary), transparent 60%);
-  top: -10%;
-  left: -10%;
-}
-.bg-aurora::after {
-  background: radial-gradient(circle, var(--purple), transparent 60%);
-  bottom: -15%;
-  right: -10%;
-  animation-delay: -9s;
+section[id] {
+  scroll-margin-top: 48px;
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(5%, 8%) scale(1.1); }
+::selection {
+  background: rgb(var(--accent) / 0.25);
 }
 
-.grid-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse at 50% 30%, black 40%, transparent 80%);
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.backdrop-glass {
-  @apply bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #00e0ff 0%, #a855f7 50%, #ffe45e 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #07070b; }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00e0ff, #a855f7);
-  border-radius: 5px;
-  border: 2px solid #07070b;
-}
-
-.logo-filter {
-  
-  filter: drop-shadow(0 0 8px var(--primary))
-          hue-rotate(180deg) saturate(1.5) brightness(1.2);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  * { cursor: none !important; }
-  .cursor-dot {
-    position: fixed;
-    top: 0; left: 0;
-    width: 8px; height: 8px;
-    background: var(--primary);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width .2s, height .2s, background .2s;
+@layer components {
+  /* Large display type: tight leading and negative tracking that grows with size. */
+  .type-hero {
+    font-size: clamp(3.5rem, 11vw, 7.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 700;
   }
-  .cursor-ring {
-    position: fixed;
-    top: 0; left: 0;
-    width: 36px; height: 36px;
-    border: 1.5px solid rgba(0,224,255,0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width .25s, height .25s, border-color .25s, background .25s;
+  .type-headline {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    line-height: 1.07;
+    letter-spacing: -0.025em;
+    font-weight: 700;
   }
-  .cursor-hover .cursor-dot { width: 0; height: 0; }
-  .cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--accent); background: rgba(255,228,94,0.1); }
+  .type-lead {
+    font-size: clamp(1.3125rem, 2.4vw, 1.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-[17px] font-normal text-white;
+    transition: background-color 200ms ease, transform 120ms ease-out;
+  }
+  .btn-primary:hover {
+    background-color: rgb(var(--accent) / 0.88);
+  }
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+
+  /* Apple-style text link with a trailing chevron that nudges on hover. */
+  .link-chevron {
+    @apply inline-flex items-center gap-1 text-accent;
+  }
+  .link-chevron:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .link-chevron svg {
+    transition: transform 200ms ease;
+  }
+  .link-chevron:hover svg {
+    transform: translateX(2px);
+  }
 }
 
-.tilt-card { transform-style: preserve-3d; }
-.tilt-card .tilt-inner { transform: translateZ(40px); }
-
-.link-underline { position: relative; }
-.link-underline::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -4px;
-  width: 0; height: 2px;
-  background: linear-gradient(90deg, #00e0ff, #a855f7);
-  transition: width 0.3s ease;
-}
-.link-underline:hover::after { width: 100%; }
-
-@keyframes glitch-in {
-  0% { opacity: 0; letter-spacing: 0.6em; filter: blur(6px); }
-  60% { opacity: 1; letter-spacing: 0.2em; filter: blur(0); }
-  70% { transform: translateX(2px); }
-  75% { transform: translateX(-2px); }
-  80% { transform: translateX(1px); }
-  100% { opacity: 1; transform: translateX(0); }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
 }

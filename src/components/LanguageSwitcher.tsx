@@ -1,34 +1,38 @@
 "use client";
 import { motion } from 'framer-motion';
-import { FiGlobe } from 'react-icons/fi';
 import { useLang } from './LanguageProvider';
 import { LANGS } from '@/lib/i18n';
 
-export default function LanguageSwitcher() {
-  const { lang, setLang, switching } = useLang();
+/** Segmented control; the selected pill slides between options. */
+export default function LanguageSwitcher({ layoutId = 'lang-pill' }: { layoutId?: string }) {
+  const { lang, setLang, t } = useLang();
 
   return (
-    <div className="relative flex items-center rounded-full border border-white/15 bg-white/5 backdrop-blur-md px-1 py-1">
-      <FiGlobe className="ml-2 mr-1 text-white/60 text-sm shrink-0" />
+    <div
+      role="group"
+      aria-label={t('nav.language')}
+      className="inline-flex items-center rounded-full bg-fg/[0.07] p-0.5"
+    >
       {LANGS.map((l) => {
         const active = lang === l;
         return (
           <button
             key={l}
+            type="button"
             onClick={() => setLang(l)}
-            disabled={switching}
-            className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${
-              active ? 'text-darkBg' : 'text-white/60 hover:text-white'
+            aria-pressed={active}
+            className={`relative h-7 min-w-[36px] rounded-full px-2 text-[11px] font-semibold uppercase tracking-[0.04em] transition-colors duration-200 ${
+              active ? 'text-fg' : 'text-muted hover:text-fg'
             }`}
           >
             {active && (
               <motion.span
-                layoutId="lang-pill"
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-purple"
-                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                layoutId={layoutId}
+                className="absolute inset-0 rounded-full bg-raised shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
+                transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
               />
             )}
-            <span className="relative z-10">{l}</span>
+            <span className="relative">{l}</span>
           </button>
         );
       })}
