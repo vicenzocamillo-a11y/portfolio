@@ -1,3 +1,6 @@
+import { SiHtml5, SiCss3, SiJavascript, SiPython, SiC, SiCplusplus, SiGithub } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+
 export type Project = {
   title: string;
   description: string;
@@ -25,19 +28,14 @@ export const projects: Project[] = [
 ];
 
 export const skills = [
-  { name: 'HTML5', level: 100, color: '#e34f26' },
-  { name: 'CSS3', level: 93, color: '#38bdf8' },
-  { name: 'Tailwind CSS', level: 10, color: '#38bdf8' },
-  { name: 'JavaScript', level: 37, color: '#f7df1e' },
-  { name: 'React / Next.js', level: 14, color: '#00e0ff' },
-  { name: 'Node.js', level: 20, color: '#83cc66' },
-  { name: 'Git / GitHub', level: 67, color: '#a855f7' },
-  { name: 'TypeScript', level: 76, color: '#3178c6' },
-  { name: 'UI / UX Design', level: 100, color: '#ffe45e' },
-  { name: 'C', level: 78, color: '#00599C' },
-  { name: 'C++', level: 15, color: '#00599C' },
-  { name: 'Python', level: 20, color: '#3776AB' },
-  { name: 'Java', level: 23, color: '#ED8B00' },
+  { name: 'HTML', icon: SiHtml5, color: '#e34f26' },
+  { name: 'CSS', icon: SiCss3, color: '#1572b6' },
+  { name: 'JavaScript', icon: SiJavascript, color: '#f7df1e' },
+  { name: 'Python', icon: SiPython, color: '#3776ab' },
+  { name: 'C', icon: SiC, color: '#a8b9cc' },
+  { name: 'C++', icon: SiCplusplus, color: '#00599c' },
+  { name: 'Java', icon: FaJava, color: '#ed8b00' },
+  { name: 'GitHub', icon: SiGithub, color: '#ffffff' },
 ];
 
 export const learningStack = [

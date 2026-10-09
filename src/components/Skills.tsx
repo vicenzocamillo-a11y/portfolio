@@ -16,31 +16,27 @@ export default function Skills() {
     >
       <SectionHeading subtitle={t('skills.subtitle')} title={t('skills.title')} />
 
-      <div className="space-y-6 mt-12">
-        {skills.map((s, i) => (
-          <motion.div
-            key={s.name}
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.06 }}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-medium text-white">{s.name}</span>
-              <span className="text-sm font-mono text-primary">{s.level}%</span>
-            </div>
-            <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full rounded-full"
-                style={{ background: s.color }}
-                initial={{ width: 0 }}
-                whileInView={{ width: `${s.level}%` }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12">
+        {skills.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <motion.div
+              key={s.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 py-8 transition-colors hover:border-white/25 hover:bg-white/10"
+            >
+              <Icon
+                className="text-5xl transition-transform duration-300 group-hover:scale-110"
+                style={{ color: s.color }}
+                aria-hidden
               />
-            </div>
-          </motion.div>
-        ))}
+              <span className="font-medium text-white">{s.name}</span>
+            </motion.div>
+          );
+        })}
       </div>
     </motion.div>
   );
