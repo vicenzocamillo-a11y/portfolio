@@ -1,17 +1,13 @@
 "use client";
-import { Fragment, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useLang } from './LanguageProvider';
 
+/** Renders a translation, turning `{b}…{/b}` into emphasized text. */
 export default function T({ k, className }: { k: string; className?: string }) {
   const { t } = useLang();
   const text = t(k);
   const parts: ReactNode[] = [];
-  const tags: Record<string, string> = {
-    b: 'font-semibold text-white',
-    g: 'text-gradient font-medium',
-  };
-
-  const regex = /\{([bg])\}(.*?)\{\/\1\}/g;
+  const regex = /\{b\}(.*?)\{\/b\}/g;
   let last = 0;
   let m: RegExpExecArray | null;
   let i = 0;
@@ -19,8 +15,8 @@ export default function T({ k, className }: { k: string; className?: string }) {
   while ((m = regex.exec(text))) {
     if (m.index > last) parts.push(text.slice(last, m.index));
     parts.push(
-      <span key={i++} className={tags[m[1]]}>
-        {m[2]}
+      <span key={i++} className="font-semibold text-fg">
+        {m[1]}
       </span>
     );
     last = m.index + m[0].length;
