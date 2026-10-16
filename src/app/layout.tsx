@@ -7,8 +7,8 @@ export const metadata = {
   title: 'Vicenzo · Portfólio',
   description: 'Portfólio de Vicenzo, estudante de Informática.',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+    { media: '(prefers-color-scheme: light)', color: '#000000' },
+    { media: '(prefers-color-scheme: dark)', color: '#ffffff' },
   ],
 };
 
