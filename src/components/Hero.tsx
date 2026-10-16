@@ -42,14 +42,13 @@ export default function Hero() {
         transition={{ type: 'spring', bounce: 0, duration: 1.2, delay: 0.25 }}
         className="mx-auto max-w-page px-6 pb-24 pt-16 md:pb-32 md:pt-20"
       >
-        <div className="overflow-hidden rounded-tile bg-surface">
+        <div className="mx-auto max-w-[560px] overflow-hidden rounded-tile bg-surface">
           <img
-            src="images/vicenzo.jpg"
-            alt="Vicenzo encostado em uma Ferrari vermelha em um showroom"
-            width={1024}
-            height={1024}
-            className="aspect-square w-full object-cover sm:aspect-[4/3]"
-            style={{ objectPosition: '50% 45%' }}
+            src="images/vicenzo-portrait.jpg"
+            alt="Retrato de Vicenzo com luz laranja ao fundo"
+            width={1086}
+            height={1448}
+            className="aspect-[3/4] w-full object-cover"
           />
         </div>
       </motion.div>
